@@ -18,7 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('./contato/contato.module').then(m => m.ContatoPageModule)
   }
   
-    //Rotas simples
+    //Rotas simples :
     /*{path 'incio'}, component: iniciocomponete*/
   
 ];
