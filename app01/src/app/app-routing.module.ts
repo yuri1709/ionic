@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     //Nesse caso ele não carrega diretamente a rota
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./page/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
@@ -15,7 +15,11 @@ const routes: Routes = [
   },
   {
     path: 'contato',
-    loadChildren: () => import('./contato/contato.module').then(m => m.ContatoPageModule)
+    loadChildren: () => import('./page/contato/contato.module').then(m => m.ContatoPageModule)
+  },
+  {
+    path: 'sobre',
+    loadChildren: () => import('./page/sobre/sobre.module').then(m => m.SobrePageModule)
   }
   
     //Rotas simples :

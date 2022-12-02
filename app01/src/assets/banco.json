@@ -1,0 +1,14 @@
+{
+    "produtosArray": [
+        {
+            "nome": "Arroz",
+            "preco": 9,
+            "quantia": 4 
+        },
+        {
+            "nome": "Arroz",
+            "preco": 9,
+            "quantia": 4 
+        }
+    ]
+}
