@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'contato',
-    loadChildren: () => import('./page/contato/contato.module').then(m => m.ContatoPageModule)
+    loadChildren: () => import('./page/contato/contato.module').then(m => m.StockPageModule)
   },
   {
     path: 'sobre',

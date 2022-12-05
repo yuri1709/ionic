@@ -2,13 +2,13 @@
 
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ContatoPage } from "./contato.page";
+import { StockPage } from "./contato.page";
 
 //Esse Routes vai ser tipo uma váriavel e
 //também que à variavel que contem o caminho para o componene(page) 
 //que será carregado nessa rota filha
 const routes: Routes = [
-    {path: '', component: ContatoPage}
+    {path: '', component: StockPage}
 ] 
 
 @NgModule({
@@ -16,6 +16,6 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 
-export class ContatoPageRoutingModule {
+export class StockPageRoutingModule {
 
 }

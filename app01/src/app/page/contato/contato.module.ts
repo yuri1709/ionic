@@ -2,16 +2,16 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { ContatoPageRoutingModule } from "./contato-routing.module";
-import { ContatoPage } from "./contato.page";
+import { StockPageRoutingModule } from "./contato-routing.module";
+import { StockPage } from "./contato.page";
 
 @NgModule({
     imports:[
         CommonModule,
         FormsModule,
         IonicModule,
-        ContatoPageRoutingModule
+        StockPageRoutingModule
     ],
-    declarations: [ContatoPage]
+    declarations: [StockPage]
 })
-export class ContatoPageModule{}
+export class StockPageModule{}

@@ -6,8 +6,13 @@
             "quantia": 4 
         },
         {
-            "nome": "Arroz",
-            "preco": 9,
+            "nome": "Feijão",
+            "preco": 10,
+            "quantia": 4 
+        },
+        {
+            "nome": "Feijão",
+            "preco": 10,
             "quantia": 4 
         }
     ]

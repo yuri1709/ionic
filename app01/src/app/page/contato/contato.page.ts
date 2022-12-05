@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
     styleUrls: ['contato.page.scss']
 })
 
-export class ContatoPage {
+export class StockPage {
     constructor(){
     }
 
