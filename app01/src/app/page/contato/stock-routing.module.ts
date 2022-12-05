@@ -2,7 +2,7 @@
 
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { StockPage } from "./contato.page";
+import { StockPage } from "./stock.page";
 
 //Esse Routes vai ser tipo uma váriavel e
 //também que à variavel que contem o caminho para o componene(page) 

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="dark">
+  <ion-toolbar color="dark"> <!--mode=ios deixa centralizado-->
     <ion-title>
       Mercadinho do Zé
     </ion-title>
@@ -13,12 +13,16 @@
         <ion-label>{{produto.nome}} / {{produto.quantia}}</ion-label>
       </ion-item>
       <ion-item-options>
-        <ion-item-option color="danger">Excluir</ion-item-option> <!--Botão--> 
-        <ion-item-option color="primary">Atualizar</ion-item-option> <!--Botão--> 
+        <ion-item-option color="danger"><ion-icon name="trash-outline" style="width: 20px; height: 20px"></ion-icon></ion-item-option> <!--Botão--> 
+        <ion-item-option color="primary"><ion-icon name="refresh-outline"  style="width: 20px; height: 20px"></ion-icon></ion-item-option> <!--Botão--> 
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+<!-- Botão Flutuante -->
+  <ion-fab horizontal="end" vertical="bottom">
+    <ion-fab-button><ion-icon name="add-outline"></ion-icon></ion-fab-button>
+  </ion-fab>
   <div id="container">
-    <ion-button routerLink="/contato" color="danger">Contato</ion-button>
+    <ion-button routerLink="/contato" color="danger">Management</ion-button>
   </div>
 </ion-content>
