@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../../core/models/produtos.model';
 import { HttpClient } from '@angular/common/http';
-import { iosTransitionAnimation, LoadingController } from '@ionic/angular';
+import { AlertController, AlertInput, iosTransitionAnimation, LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -15,7 +15,9 @@ export class HomePage implements OnInit {
     private http: HttpClient,
 
     //loadingController - Ferramenta do carregando.
-    private loadCtrl: LoadingController
+    private loadCtrl: LoadingController,
+
+    private alertCtrl: AlertController
     ) {}
   
   ngOnInit() {
@@ -35,9 +37,30 @@ export class HomePage implements OnInit {
       message: 'Aguarde...',
       duration: 1000
     });
-
     (await load).present();
+  }
 
+  //Método do alertando
+  async alertando() {
+    const alert = this.alertCtrl.create({
+      mode: 'ios',
+      message: 'Sua compra',
+      header: 'Lista:',
+      buttons: ['ok'],
+      inputs: [
+        {
+          name: 'produto',
+          type: 'text',
+          placeholder: 'Informe o produto'
+        },
+        {
+          name: 'quantidade',
+          type: 'text',
+          placeholder: 'Informe a quantidade'
+        }
+      ]
+    });
+    (await alert).present();
   }
   
 }
