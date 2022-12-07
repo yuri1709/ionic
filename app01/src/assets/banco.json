@@ -1,19 +1,16 @@
 {
-    "produtosArray": [
-        {
-            "nome": "Arroz",
-            "preco": 9,
-            "quantia": 4 
-        },
-        {
-            "nome": "Feijão",
-            "preco": 10,
-            "quantia": 4 
-        },
-        {
-            "nome": "Feijão",
-            "preco": 10,
-            "quantia": 4 
-        }
-    ]
+  "produtosArray": [
+    {
+      "nome": "Arroz",
+      "quantia": "2",
+      "preco": "5",
+      "id": 1
+    },
+    {
+      "nome": "Feijão",
+      "quantia": "3",
+      "preco": "4",
+      "id": 2
+    }
+  ]
 }

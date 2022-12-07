@@ -8,12 +8,13 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
+    <ion-title>Lista de produtos:</ion-title>
     <ion-item-sliding *ngFor="let produto of itens; index as i"> 
-      <ion-item>
+      <ion-item class="itens">
         <ion-label>{{produto.nome}} / {{produto.quantia}}</ion-label>
       </ion-item>
       <ion-item-options>
-        <ion-item-option color="danger"><ion-icon name="trash-outline" style="width: 20px; height: 20px"></ion-icon></ion-item-option> <!--Botão--> 
+        <ion-item-option (click)="deletarItem(produto.id, produto.nome)"color="danger"><ion-icon name="trash-outline" style="width: 20px; height: 20px"></ion-icon></ion-item-option> <!--Botão--> 
         <ion-item-option color="primary"><ion-icon name="refresh-outline"  style="width: 20px; height: 20px"></ion-icon></ion-item-option> <!--Botão--> 
       </ion-item-options>
     </ion-item-sliding>
