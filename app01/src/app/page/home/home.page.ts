@@ -34,10 +34,10 @@ export class HomePage implements OnInit {
 
   deletarItem(id: number, nome: string) {
     try{
-      this.db.deleteItem(id);
-      this.carregando(5000,"Deletando item "+nome+"...");
+      this.db.deleteItem(id);      
     }
     finally {
+      this.carregando(5000,"Deletando item "+nome+"...");
       location.reload();
     }
     
@@ -85,8 +85,8 @@ export class HomePage implements OnInit {
             try {
               console.log(item)
               this.db.insertItem(item);
-              this.carregando(6000, "Cadastrando...");
             } finally {
+              this.carregando(6000, "Cadastrando...");
               location.reload();
             }
             

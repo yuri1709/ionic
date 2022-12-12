@@ -3,13 +3,13 @@
     {
       "nome": "Arroz",
       "quantia": "2",
-      "preco": "5",
+      "preco": "12",
       "id": 1
     },
     {
-      "nome": "Feijão",
-      "quantia": "3",
-      "preco": "4",
+      "nome": "Arroz1",
+      "quantia": "2",
+      "preco": "23",
       "id": 2
     }
   ]
