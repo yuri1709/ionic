@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../../core/models/produtos.model';
-import { HttpClient } from '@angular/common/http';
-import { AlertController, AlertInput, iosTransitionAnimation, LoadingController } from '@ionic/angular';
 import { BancoService } from 'src/app/core/servicos/banco.service';
+import { UtilityService } from 'src/app/core/servicos/utility.service';
+import { AlertController } from '@ionic/angular';
+
+
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -14,31 +18,26 @@ export class HomePage implements OnInit {
 
   constructor(
     //loadingController - Ferramenta do carregando.
-    private loadCtrl: LoadingController,
-
-    private alertCtrl: AlertController,
-
-    private db: BancoService
+    private db: BancoService,
+    private utility: UtilityService,
+    private alertCtrl: AlertController,      
     ) {}
   
   ngOnInit() {
     //Carregando o inicio da página
-    this.carregando(1, "Loading...")
-    this.getJson()
-  }
-
-  getJson() {
+    this.utility.carregando(1000, "Loading...")//tempo/mensagem
     this.db.getAllItem().subscribe(resultado => this.itens = resultado)
-    console.log("itens:" + this.itens)
   }
 
-  deletarItem(id: number, nome: string) {
+  deletarItem(id: number) {
     try{
-      this.db.deleteItem(id);      
+      this.db.deleteItem(id);  
+      //this.carregando(5000,"Deletando item...");            
     }
     finally {
-      this.carregando(5000,"Deletando item "+nome+"...");
-      location.reload();
+      this.utility.toastando('Item deletado','danger', 'bottom',  2000, );
+      setTimeout(this.refresh, 2000);
+      
     }
     
   }
@@ -82,29 +81,36 @@ export class HomePage implements OnInit {
               quantia: form.quantidade,
               preco: form.preco
             };
-            try {
-              console.log(item)
-              this.db.insertItem(item);
-            } finally {
-              this.carregando(6000, "Cadastrando...");
-              location.reload();
+
+            try{
+              this.db.insertItem(item)
+            }finally{
+              this.utility.toastando('Cadastrado com sucesso', 'success', 'top', 2000);
+              setTimeout(this.refresh, 2000)
             }
-            
-          }   
-        } 
+          /*  Promise.resolve().then(() => {
+              this.db.insertItem(item)
+           }).then(() => { 
+              this.utility.carregando(2000,"Cadastro...")
+              console.log("a");
+           }).then(() => {
+              this.utility.toastando('Cadastrado com sucesso', 'successy', 'top', 2000);
+              console.log("b");
+           }).then(() => {
+              location.reload()
+              console.log("c");
+           }) */
+           }           
+          }           
       ]
     });
     (await alert).present();
+  }   
+
+  refresh(){
+    location.reload()
   }
 
-  
-  async carregando(timer: number, msg:string) {
-    const load = this.loadCtrl.create({
-      mode: 'ios',
-      message: msg,
-      duration: timer
-    });
-    (await load).present();
-  }
+
   
 }
