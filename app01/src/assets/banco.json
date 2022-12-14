@@ -8,12 +8,6 @@
     },
     {
       "nome": "a",
-      "quantia": "22",
-      "preco": "22",
-      "id": 2
-    },
-    {
-      "nome": "a",
       "quantia": "21",
       "preco": "121",
       "id": 3
@@ -37,22 +31,10 @@
       "id": 6
     },
     {
-      "nome": "23",
-      "quantia": "32",
-      "preco": "2323",
-      "id": 7
-    },
-    {
       "nome": "3",
       "quantia": "3",
       "preco": "33",
       "id": 8
-    },
-    {
-      "nome": "aa",
-      "quantia": "aa",
-      "preco": "222",
-      "id": 9
     },
     {
       "nome": "bb",
@@ -61,10 +43,10 @@
       "id": 10
     },
     {
-      "nome": "a",
-      "quantia": "2",
-      "preco": "33",
-      "id": 11
+      "nome": "22",
+      "quantia": "22222232",
+      "preco": "32323232",
+      "id": 13
     }
   ]
 }

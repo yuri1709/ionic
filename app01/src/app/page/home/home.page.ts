@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from '../../core/models/produtos.model';
 import { BancoService } from 'src/app/core/servicos/banco.service';
 import { UtilityService } from 'src/app/core/servicos/utility.service';
-import { AlertController } from '@ionic/angular';
+import { ActionSheetController, AlertController } from '@ionic/angular';
 
 
 
@@ -20,7 +20,8 @@ export class HomePage implements OnInit {
     //loadingController - Ferramenta do carregando.
     private db: BancoService,
     private utility: UtilityService,
-    private alertCtrl: AlertController,      
+    private alertCtrl: AlertController,  
+    private actionSheetCtrl: ActionSheetController    
     ) {}
   
   ngOnInit() {
@@ -88,18 +89,6 @@ export class HomePage implements OnInit {
               this.utility.toastando('Cadastrado com sucesso', 'success', 'top', 2000);
               setTimeout(this.refresh, 2000)
             }
-          /*  Promise.resolve().then(() => {
-              this.db.insertItem(item)
-           }).then(() => { 
-              this.utility.carregando(2000,"Cadastro...")
-              console.log("a");
-           }).then(() => {
-              this.utility.toastando('Cadastrado com sucesso', 'successy', 'top', 2000);
-              console.log("b");
-           }).then(() => {
-              location.reload()
-              console.log("c");
-           }) */
            }           
           }           
       ]
@@ -109,6 +98,37 @@ export class HomePage implements OnInit {
 
   refresh(){
     location.reload()
+  }
+
+
+  async adicionarItem(id: number) {
+   
+    const item = await this.actionSheetCtrl.create({
+      header: 'Example header',
+      subHeader: 'Example subheader',
+      //cssClass: 'my-custom-class',
+      buttons: [
+        {
+          text: 'Adicionar',
+          handler: () => {
+           console.log("Item adicionado!"+id)
+          },
+          data: {
+            action: 'add'
+          },
+        },
+        {
+          text: 'Remover',
+          handler: () => {
+            console.log("Item removido!"+id)
+          },
+          data: {
+            action: 'remover'
+          }
+        }
+      ]
+    });
+    item.present()
   }
 
 
