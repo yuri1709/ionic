@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from '../../core/models/produtos.model';
 import { BancoService } from 'src/app/core/servicos/banco.service';
 import { UtilityService } from 'src/app/core/servicos/utility.service';
-import { AlertController } from '@ionic/angular';
+import { ActionSheetController, AlertController, IonMenuToggle } from '@ionic/angular';
 
 
 
@@ -20,7 +20,8 @@ export class HomePage implements OnInit {
     //loadingController - Ferramenta do carregando.
     private db: BancoService,
     private utility: UtilityService,
-    private alertCtrl: AlertController,      
+    private alertCtrl: AlertController,  
+    private actionSheetCtrl: ActionSheetController    
     ) {}
   
   ngOnInit() {
@@ -33,8 +34,9 @@ export class HomePage implements OnInit {
     try{
       this.db.deleteItem(id);  
       //this.carregando(5000,"Deletando item...");            
-    }
-    finally {
+    }catch(err) {
+      console.log(err);
+    }finally {
       this.utility.toastando('Item deletado','danger', 'bottom',  2000, );
       setTimeout(this.refresh, 2000);
       
@@ -79,34 +81,63 @@ export class HomePage implements OnInit {
             let item = {
               nome: form.item,
               quantia: form.quantidade,
-              preco: form.preco
+              preco: form.preco,
+              //Vai ser a variavel de controle do ngIf
+              status: false
             };
 
             try{
               this.db.insertItem(item)
+            }catch(err){
+              console.log(err)
             }finally{
               this.utility.toastando('Cadastrado com sucesso', 'success', 'top', 2000);
               setTimeout(this.refresh, 2000)
-            }
-          /*  Promise.resolve().then(() => {
-              this.db.insertItem(item)
-           }).then(() => { 
-              this.utility.carregando(2000,"Cadastro...")
-              console.log("a");
-           }).then(() => {
-              this.utility.toastando('Cadastrado com sucesso', 'successy', 'top', 2000);
-              console.log("b");
-           }).then(() => {
-              location.reload()
-              console.log("c");
-           }) */
-           }           
+            }           
           }           
+        }           
       ]
     });
     (await alert).present();
   }   
 
+  async presentActionSheet(item: Produto) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Opção',
+      subHeader: '',
+      cssClass: 'my-custom-class',
+      buttons: [
+        {
+          text: item.status ? 'Desmarcar' : 'Marcar',
+          icon: item.status ? 'radio-button-off' : 'checkmark-circle',
+          handler: () => {
+            item.status = !item.status;
+            this.db.updateItem(item.status);
+            this.utility.toastando('Marcamos', 'primary', 'middle', 2000);
+            console.log("Item adicionado"+item.id);
+          }
+        },
+       /*  {
+          text: 'Remover',
+          handler: () => {
+            item.status = false;
+            this.db.updateItem(item.status);
+            this.utility.toastando('Desmarcamos', 'danger', 'middle', 2000);
+            console.log("Item removido"+item.id);
+          }
+        }, */
+        {
+          text: 'Cancelar',
+          handler: () => {
+            this.utility.toastando('Cancelamos', 'dark', 'middle', 2000);
+          }
+        }
+      ]
+    });
+    await actionSheet.present();
+  }
+  
+  //Método para fazer o reload da página
   refresh(){
     location.reload()
   }

@@ -10,8 +10,7 @@ export class UtilityService {
 
   constructor( //injeção de depedência.
     private loadCtrl: LoadingController,
-    private toast: ToastController,
-    private router: Router
+    private toast: ToastController
   ) {}
 
   async carregando(timer: number, msg:string) {
@@ -25,10 +24,10 @@ export class UtilityService {
 
   //Método do toast - Exibe uma mensagem
   async toastando(
-    message: string, 
-    color: string,  
-    position: ToastOptions["position"],
-    duration: number
+      message: string, 
+      color: string,  
+      position: ToastOptions["position"],
+      duration: number
     ) {
     const toastei = this.toast.create({ //Um objeto sendo passado como argumento.
       message,
@@ -37,6 +36,8 @@ export class UtilityService {
       duration      
     });      
     (await toastei).present();
+    //Essa solução é boa!!!
+    //location.reload()
   }
 
 }
