@@ -102,6 +102,7 @@ export class HomePage implements OnInit {
   }   
 
   async presentActionSheet(item: Produto) {
+    let aviso;
     const actionSheet = await this.actionSheetCtrl.create({
       header: 'Opção',
       subHeader: '',
@@ -112,20 +113,15 @@ export class HomePage implements OnInit {
           icon: item.status ? 'radio-button-off' : 'checkmark-circle',
           handler: () => {
             item.status = !item.status;
-            this.db.updateItem(item.status);
-            this.utility.toastando('Marcamos', 'primary', 'middle', 2000);
-            console.log("Item adicionado"+item.id);
+            if(item.status) {
+             aviso = {msg: "Marcamos", cor: 'primary'};
+            } else {
+             aviso= {msg: "Desmarcado", cor: 'danger'};
+            }
+            this.db.updateItem(item);
+            this.utility.toastando(aviso.msg, aviso.cor, 'middle', 2000);
           }
         },
-       /*  {
-          text: 'Remover',
-          handler: () => {
-            item.status = false;
-            this.db.updateItem(item.status);
-            this.utility.toastando('Desmarcamos', 'danger', 'middle', 2000);
-            console.log("Item removido"+item.id);
-          }
-        }, */
         {
           text: 'Cancelar',
           handler: () => {

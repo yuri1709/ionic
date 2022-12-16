@@ -21,8 +21,8 @@ export class BancoService {
     return this.http.post(this.API, JSON.stringify(produto), this.httpOptions).subscribe();
   }
 
-  updateItem(produto: any) {
-    return this.http.put(this.API,JSON.stringify(produto), this.httpOptions).subscribe();
+  updateItem(produto: Produto) {
+    return this.http.put(this.API + produto.id, JSON.stringify(produto), this.httpOptions).subscribe();
   }
 
   getAllItem() {
