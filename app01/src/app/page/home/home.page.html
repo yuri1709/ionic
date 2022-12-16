@@ -12,12 +12,12 @@
     <ion-item-sliding *ngFor="let produto of itens; index as i"> 
       <ion-item class="itens"  (click)="presentActionSheet(produto)">
        
-        <!-- Bolinha Branca -->
+        <!-- Bolinha - Branca -->
         <ion-icon name="radio-button-off" *ngIf="!produto.status"></ion-icon>
         <ion-label *ngIf="!produto.status"><strong>Produto:</strong>{{produto.nome}}</ion-label>
         <ion-label *ngIf="!produto.status"><strong>Quant:</strong>{{produto.quantia}}</ion-label>
 
-        <!-- Bolinha Verde -->
+        <!-- Bolinha - Verde -->
         <ion-icon name="checkmark-circle" color="success" *ngIf="produto.status"></ion-icon>
         <ion-label *ngIf="produto.status"><del><strong>Produto:</strong>{{produto.nome}}</del>></ion-label>
         <ion-label *ngIf="produto.status"><del><strong>Quant:</strong>{{produto.quantia}}</del>></ion-label>
