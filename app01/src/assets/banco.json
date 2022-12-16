@@ -8,16 +8,9 @@
       "id": 1
     },
     {
-      "nome": "Arroz",
-      "quantia": "1 kg",
-      "preco": "20",
-      "status": false,
-      "id": 2
-    },
-    {
-      "nome": "Mealncia",
-      "quantia": "2",
-      "preco": "20",
+      "nome": "Melância",
+      "quantia": "1kg",
+      "preco": "6",
       "status": false,
       "id": 3
     }

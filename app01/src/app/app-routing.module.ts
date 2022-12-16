@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'sobre',
     loadChildren: () => import('./page/sobre/sobre.module').then(m => m.SobrePageModule)
+  },
+  {
+    path: 'form/:id',
+    loadChildren: () => import('./page/form/form.module').then( m => m.FormPageModule)
   }
   
     //Rotas simples :

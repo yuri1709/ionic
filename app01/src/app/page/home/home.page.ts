@@ -113,11 +113,7 @@ export class HomePage implements OnInit {
           icon: item.status ? 'radio-button-off' : 'checkmark-circle',
           handler: () => {
             item.status = !item.status;
-            if(item.status) {
-             aviso = {msg: "Marcamos", cor: 'primary'};
-            } else {
-             aviso= {msg: "Desmarcado", cor: 'danger'};
-            }
+            item.status ?  aviso = {msg: "Marcamos", cor: 'primary'} : aviso= {msg: "Desmarcado", cor: 'danger'};
             this.db.updateItem(item);
             this.utility.toastando(aviso.msg, aviso.cor, 'middle', 2000);
           }

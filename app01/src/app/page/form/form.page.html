@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark"> <!--mode=ios deixa centralizado-->
+    <ion-buttons slot="start"><ion-back-button>Back</ion-back-button></ion-buttons>
+    <ion-title>
+      Mercadinho do Zé
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img [src]="image"></ion-img>
+    <form #form="ngForm" (ngSubmit)="update(form)">
+      <ion-item>
+        <ion-label>Item:</ion-label>
+        <ion-input type="text" name="produto" [ngModel]="produto.nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Quantidade:</ion-label>
+        <ion-input type="text" name="quantidade" [ngModel]="produto.quantia"></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" color="success" expand="block">Atualizar</ion-button>
+    </form>
+</ion-content>
+
