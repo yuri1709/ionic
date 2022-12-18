@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from '../../core/models/produtos.model';
 import { BancoService } from 'src/app/core/servicos/banco.service';
 import { UtilityService } from 'src/app/core/servicos/utility.service';
-import { ActionSheetController, AlertController, IonMenuToggle } from '@ionic/angular';
+import { ActionSheetController, AlertController } from '@ionic/angular';
 
 
 
@@ -26,7 +26,7 @@ export class HomePage implements OnInit {
   
   ngOnInit() {
     //Carregando o inicio da página
-    this.utility.carregando(1000, "Loading...")//tempo/mensagem
+    this.utility.carregando(1, "Loading...")//tempo/mensagem
     this.db.getAllItem().subscribe(resultado => this.itens = resultado)
   }
 

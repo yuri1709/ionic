@@ -2,17 +2,24 @@
   "produtosArray": [
     {
       "nome": "Alcatra",
-      "quantia": "5 kg",
+      "quantia": "10 Kg",
       "preco": "20",
       "status": false,
       "id": 1
     },
     {
-      "nome": "Melância",
-      "quantia": "1kg",
+      "nome": "Melão",
+      "quantia": "10 kg",
       "preco": "6",
       "status": false,
       "id": 3
+    },
+    {
+      "nome": "Maracuja1",
+      "quantia": "22 dúzias",
+      "preco": "22",
+      "status": false,
+      "id": 4
     }
   ]
 }
